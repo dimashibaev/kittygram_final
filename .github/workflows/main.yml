@@ -11,7 +11,7 @@ jobs:
     services:
       postgres:
         image: postgres:13.10
-        env.example:
+        env:
           POSTGRES_USER: kittygram_user
           POSTGRES_PASSWORD: kittygram_password
           POSTGRES_DB: kittygram
@@ -31,7 +31,7 @@ jobs:
         pip install flake8==6.0.0 flake8-isort==6.0.0
         pip install -r ./backend/requirements.txt 
     - name: Test with flake8 and django tests
-      env.example:
+      env:
         POSTGRES_USER: kittygram_user
         POSTGRES_PASSWORD: kittygram_password
         POSTGRES_DB: kittygram
