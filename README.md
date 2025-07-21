@@ -1,3 +1,77 @@
+# Kittygram
+
+**Kittygram** — веб-приложение для публикации и просмотра фотографий котиков. Позволяет пользователям регистрироваться, добавлять посты с изображениями котиков.
+
+## Установка и запуск
+
+1. Клонирование репозитория:
+
+   ```bash
+   git clone https://github.com/<ваш_логин>/kittygram_final.git
+   cd kittygram_final
+   ```
+2. Запуск проекта в контейнерах:
+
+   ```bash
+   docker compose -f docker-compose.production.yml up -d --build
+   ```
+3. Выполнение миграций и сбор статики:
+
+   ```bash
+   docker compose exec backend python manage.py migrate
+   docker compose exec backend python manage.py collectstatic --noinput
+   ```
+
+## Примеры запросов
+
+Базовый URL: `https://<ваш_домен>/api/`
+
+* **Получить список постов**
+
+  ```http
+  GET /api/posts/ HTTP/1.1
+  Host: <ваш_домен>
+  Authorization: Token <ваш_token>
+  ```
+* **Создать новый пост**
+
+  ```http
+  POST /api/posts/ HTTP/1.1
+  Host: <ваш_домен>
+  Authorization: Token <ваш_token>
+  Content-Type: application/json
+
+  {
+    "title": "Мой котик",
+    "image": "data:image/png;base64,..."
+  }
+  ```
+* **Получить данные текущего пользователя**
+
+  ```http
+  GET /api/users/me/ HTTP/1.1
+  Host: <ваш_домен>
+  Authorization: Token <ваш_token>
+  ```
+
+## Используемые технологии
+
+* Python 3.9
+* Django 3.2
+* Django REST Framework
+* PostgreSQL 13
+* Docker
+* Docker Compose
+* NGINX
+* React
+* GitHub Actions
+
+## Автор
+
+Дмитрий Шибаев
+GitHub: [https://github.com/dimash1baev](https://github.com/dimashibaev)
+
+
 #  Как работать с репозиторием финального задания
 
 ## Что нужно сделать
